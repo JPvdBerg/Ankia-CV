@@ -1,0 +1,95 @@
+/* Final LogoLoop.css for Stability and Custom Theme */
+
+:root {
+  --primary-bg-color: #000000;
+  --hacker-green: #00ff00;
+}
+
+.logoloop {
+  position: relative;
+  overflow-x: hidden;
+  --logoloop-gap: 32px;
+  --logoloop-logoHeight: 32px;
+  --logoloop-fadeColorAuto: #000000; /* Pure black to match background */
+  color: #f5f5f5; /* Ensure icons are white/light by default */
+}
+
+.logoloop__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  user-select: none;
+}
+
+.logoloop__list {
+  display: flex;
+  align-items: center;
+  /* FIX: Apply minimum height for stability */
+  min-height: var(--logoloop-logoHeight);
+}
+
+.logoloop__item {
+  flex: 0 0 auto;
+  margin-right: var(--logoloop-gap);
+  /* FIX: Added minimum width to stabilize position calculation for pixel fonts */
+  min-width: 80px; 
+  text-align: center;
+  /* Add subtle vertical margin */
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-size: var(--logoloop-logoHeight);
+  line-height: 1;
+}
+
+.logoloop__node {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logoloop__item svg, .logoloop__node {
+    /* REMOVED: filter: drop-shadow and animation: flicker */
+    /* Icons and text will now be static and crisp */
+}
+
+/* REMOVED: @keyframes flicker */
+
+
+.logoloop__link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.logoloop__link:hover {
+  opacity: 0.8;
+}
+
+.logoloop--fade::before,
+.logoloop--fade::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(24px, 8%, 120px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.logoloop--fade::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.logoloop--fade::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
