@@ -6,18 +6,19 @@ import RevealText from './components/RevealText.jsx';
 import LogoLoop from './components/LogoLoop.jsx';
 import AnimatedList from './components/AnimatedList.jsx'; 
 
-// --- Icons (Business & Management Focused) ---
+// --- Icons ---
+// We use FontAwesome (fa) for reliable document icons
+import { FaFileWord, FaFileExcel, FaFilePowerpoint } from 'react-icons/fa';
+
+// We use Simple Icons (si) for brands
 import { 
-  SiMicrosoftword, 
-  SiMicrosoftexcel, 
-  SiMicrosoftpowerpoint, 
   SiCanva, 
   SiTrello, 
-  SiSlack,
+  SiSlack, 
   SiGooglecalendar,
-  SiZoom,
-  SiLinkedin,
-  SiGmail
+  SiZoom, 
+  SiLinkedin, 
+  SiGmail 
 } from 'react-icons/si';
 
 // --- DATA SETUP ---
@@ -29,9 +30,9 @@ const EMAIL = "sarah.jenkins@example.com";
 
 // Tools she likely uses
 const toolLogos = [
-  { node: <SiMicrosoftword />, title: 'Word' },
-  { node: <SiMicrosoftexcel />, title: 'Excel' },
-  { node: <SiMicrosoftpowerpoint />, title: 'PowerPoint' },
+  { node: <FaFileWord />, title: 'Word' },
+  { node: <FaFileExcel />, title: 'Excel' },
+  { node: <FaFilePowerpoint />, title: 'PowerPoint' },
   { node: <SiCanva />, title: 'Canva' },
   { node: <SiTrello />, title: 'Trello' },
   { node: <SiSlack />, title: 'Slack' },
