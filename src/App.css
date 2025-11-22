@@ -1,420 +1,165 @@
-/* Custom Properties for Hacker Green Theme */
+/* --- Modern Professional Theme --- */
 :root {
-  --primary-bg-color: #000000;    /* Pure black */
-  --hacker-green: #00ff00;        /* Bright hacker green */
-  --hacker-green-light: #33ff33;  /* Slightly lighter green for accents */
-  --text-color: #c0c0c0;          /* Lighter gray for general text */
-  --highlight-text-color: #00ff00; /* Direct green for special links/text */
-  /* --- MONOFONTO HIERARCHY --- */
-  --dev-font: "Courier New", monospace; /* Readable body font */
-  --hacker-font: Monofonto, monospace; /* Fallout Pip-Boy font */
+  --primary-bg-color: #ffffff;       /* Clean White */
+  --secondary-bg-color: #f7f9fc;     /* Very Light Grey/Blue for sections */
+  --text-color: #2d3748;             /* Dark Charcoal for readability */
+  --accent-color: #319795;           /* Teal/Turquoise - great for Tourism */
+  --accent-light: #81e6d9;           /* Light Teal */
+  --gold-accent: #c0a062;            /* Gold for subtle luxury highlights */
+  
+  /* Fonts */
+  --heading-font: 'Playfair Display', serif; /* Elegant headings */
+  --body-font: 'Lato', sans-serif;           /* Clean body text */
 }
 
-/* Global Styles */
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  /* Set body font to the developer font stack */
-  font-family: var(--dev-font); 
+  font-family: var(--body-font);
   background-color: var(--primary-bg-color);
   color: var(--text-color);
   margin: 0;
   padding: 0;
-  line-height: 1.4; 
-  font-size: 1.1em; 
-  position: relative; 
-  /* --- CUSTOM CURSOR IMPLEMENTATION --- */
- cursor: url('/Virtual-CV/cursor.cur?v=1'), crosshair; /* <-- ADDED ?v=1 */
+  line-height: 1.6;
 }
 
-/* Override the default pointer for all interactive elements */
-a, button, input, select, .animated-list-container .item {
-    /* Use the safest root-relative path and include !important */
-    cursor: url('/Virtual-CV/cursor.cur?v=1'), crosshair !important; /* <-- ADDED ?v=1 */
+/* --- Typography --- */
+h1, h2, h3 {
+  font-family: var(--heading-font);
+  color: var(--text-color);
+  margin-top: 0;
 }
 
-/* --- FORCE FONT FOR ALL READABLE CONTENT --- */
-p, ul, ol, li, .animated-list-container .item-text {
-    font-family: var(--dev-font) !important;
-    font-size: 1.2em; /* Standardized size for all readable content */
-}
+h1 { font-size: 3.5rem; letter-spacing: -0.02em; }
+h2 { font-size: 2.5rem; text-align: center; margin-bottom: 2rem; color: var(--accent-color); }
+h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-color); font-weight: 700; }
+a { color: var(--accent-color); text-decoration: none; transition: all 0.2s; font-weight: 600; }
+a:hover { color: var(--gold-accent); }
 
-/* Reset base font size for large content sections */
-section {
-    font-size: 1em; 
-}
-
-a {
-  color: var(--highlight-text-color); 
-  text-decoration: none;
-  transition: color 0.3s ease-in-out;
-}
-
-a:hover {
-  color: var(--hacker-green-light);
-  /* --- FINAL LINK FIX: Targets the span inside the link to force underline on hover --- */
-  text-decoration: underline !important;
-}
-
-/* FIX: Target span children of links (used by DecryptedText) to ensure underline inheritance */
-a:hover span {
-    text-decoration: underline !important;
-}
-
-/* Header - Keep Hacker Font */
+/* --- Header / Hero Section --- */
 header {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  position: relative;
-  overflow: hidden; 
-  color: var(--hacker-green); 
-  padding: 20px;
-  box-sizing: border-box; 
-  font-family: var(--hacker-font); /* Override for header font */
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); /* Subtle gradient */
+  padding: 0 20px;
 }
 
 header h1 {
-  font-size: 3.5em; 
-  margin-bottom: 0.2em;
-  text-shadow: 0 0 8px var(--hacker-green); 
+  margin-bottom: 1rem;
+  color: #1a202c;
 }
 
 header p {
-  font-size: 1.5em;
-  text-shadow: 0 0 5px var(--hacker-green);
+  font-size: 1.5rem;
+  color: #4a5568;
+  font-weight: 300;
+  max-width: 600px;
 }
 
-.overlay {
-  position: relative;
-  z-index: 2; 
-  background-color: rgba(0, 0, 0, 0.95); 
-  padding: 15px 30px;
-  border-radius: 5px;
-  border: 1px solid var(--hacker-green);
-}
-
-/* Navigation - Keep Hacker Font */
+/* --- Navigation --- */
 nav {
   position: sticky;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.95); 
-  padding: 10px 0;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 255, 0, 0.2); 
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
   z-index: 1000;
-  border-bottom: 1px solid var(--hacker-green);
-  font-family: var(--hacker-font); /* Override for nav font */
+  flex-wrap: wrap;
 }
 
 nav a {
-  color: var(--hacker-green);
-  text-decoration: none;
-  padding: 10px 8px; 
-  margin: 0 5px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
-  font-size: 1.6em; 
+  margin: 0 1.5rem;
+  color: #4a5568;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 400;
 }
 
 nav a:hover {
-  background-color: rgba(0, 255, 0, 0.1); 
-  color: var(--hacker-green-light);
-  text-shadow: 0 0 5px var(--hacker-green-light);
-  text-decoration: none; 
+  color: var(--accent-color);
 }
 
-/* Sections */
+/* --- Sections --- */
 section {
-  padding: 80px 5%;
+  padding: 6rem 1rem;
+  max-width: 1000px;
   margin: 0 auto;
-  max-width: 900px;
-  position: relative; 
-  background-color: rgba(0, 0, 0, 0.85); 
-  border-radius: 0; 
-  box-shadow: none; 
-  border-bottom: 1px dashed rgba(0, 255, 0, 0.1); 
 }
 
-section:last-of-type {
-  border-bottom: none;
+section:nth-child(even) {
+  background-color: var(--secondary-bg-color);
+  /* Force full width background for even sections */
+  width: 100vw;
+  max-width: 100%;
+  padding-left: max(1rem, calc((100vw - 1000px) / 2));
+  padding-right: max(1rem, calc((100vw - 1000px) / 2));
 }
 
-/* Headings - Keep Hacker Font */
-h2 {
-  font-size: 2.5em;
-  color: var(--hacker-green);
-  margin-bottom: 1em;
-  text-align: center;
-  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5); 
-  font-family: var(--hacker-font);
+/* --- Modules / Lists --- */
+.education, .job {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+  margin-bottom: 2rem;
+  border-left: 4px solid var(--accent-color);
 }
 
-h3 {
-  /* This is the base size for module/job titles */
-  font-size: 1.4em; 
-  color: var(--hacker-green-light);
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
-  font-family: var(--dev-font); 
-}
-
-/* Lists */
 ul {
-  list-style-type: none; 
-  padding-left: 0; 
+  list-style: none;
+  padding: 0;
 }
 
 ul li {
   position: relative;
-  margin-bottom: 1.2em; 
-  padding-left: 2em; 
-  font-family: var(--dev-font); 
-  font-size: 1em; 
+  padding-left: 1.5rem;
+  margin-bottom: 0.8rem;
 }
 
 ul li::before {
-  content: '>'; 
-  color: var(--hacker-green);
+  content: "•";
+  color: var(--accent-color);
+  font-size: 1.5rem;
   position: absolute;
   left: 0;
-  top: 0; 
+  top: -5px;
 }
 
-strong {
-  color: var(--hacker-green); 
+/* --- Skills / LogoLoop --- */
+.skills-container {
+  margin: 3rem 0;
+  padding: 2rem 0;
+  background: white;
+  border-radius: 8px;
 }
 
-/* Education specific styles */
-.education ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.education ul li {
-    /* Use the same standardized size as all other body text */
-    font-size: 1.0em; 
-}
-
-/* Job experience specific */
-.job {
-  margin-bottom: 3em;
-  border-left: 2px solid var(--hacker-green);
-  padding-left: 1.5em;
-}
-
-.job h3 {
-  margin-top: 0;
-  color: var(--hacker-green);
-  font-size: 1.5em;
-  font-family: var(--hacker-font); 
-}
-
-.job p {
-  margin-bottom: 0.5em;
-  color: var(--text-color);
-  font-family: var(--dev-font); 
-}
-
-.job ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.job ul li::before {
-  content: '-';
-  color: var(--hacker-green-light);
-}
-
-/* Fade-in effect */
-.fade-in-section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in-section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Footer and Console - Keep Hacker Font */
+/* --- Footer --- */
 footer {
-  padding: 0; 
-  background-color: transparent;
-  border-top: 1px solid var(--hacker-green);
-  font-size: 0.9em;
-  text-align: left;
-  font-family: var(--hacker-font); 
+  text-align: center;
+  padding: 3rem;
+  background-color: #2d3748;
+  color: white;
 }
 
-.footer-console {
-    background-color: #0d0d0d;
-    padding: 1rem 2rem;
-    border-top: 1px dashed var(--hacker-green);
-    color: var(--hacker-green);
-    font-size: 1.1em;
-    overflow: hidden; 
-}
+footer p { opacity: 0.7; font-size: 0.9rem; }
 
-.typing-line {
-    display: inline-block;
-    overflow: hidden; 
-    border-right: 0.15em solid var(--hacker-green); 
-}
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% } 
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--hacker-green); }
-}
-
-.footer-copyright {
-    text-align: center;
-    padding: 1rem;
-    background-color: #0a0a0a;
-    color: var(--text-color);
-    font-size: 0.9em;
-}
-
-/* Scroll to top link */
-div a[href="#top"] {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: rgba(0, 255, 0, 0.1);
-  border: 1px solid var(--hacker-green);
-  border-radius: 5px;
-  margin-top: 20px;
-  transition: all 0.3s ease;
-  font-size: 1.4em; 
-  font-family: var(--hacker-font); 
-}
-
-div a[href="#top"]:hover {
-  background-color: var(--hacker-green);
-  color: var(--primary-bg-color);
-  text-shadow: none;
-  transform: translateY(-3px);
-  text-decoration: none;
-}
-
-/* --- Glitch Background CSS --- */
-#full-screen-glitch {
-  position: fixed; 
-  top: 0;
-  left: 0;
-  width: 100vw; 
-  height: 100vh; 
-  z-index: -1; 
-  opacity: 0.10; 
-  pointer-events: none; 
-}
-
-/* --- AnimatedList specific fixes --- */
-
-.animated-list-container {
-  background-color: transparent !important;
-  border: none !important;
-}
-
-.animated-list-container .item {
-  background-color: transparent !important; 
-  border: 1px solid rgba(0, 255, 0, 0.2) !important; 
-  color: var(--text-color) !important;
-  transition: border-color 0.3s ease, color 0.3s ease;
-  overflow: hidden; 
-  font-family: var(--dev-font) !important; 
-}
-
-.animated-list-container .item.selected {
-  background-color: transparent !important; 
-  border-color: var(--hacker-green) !important;
-  color: var(--hacker-green) !important;
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); 
-  transform: none; 
-}
-
-.animated-list-container .item-text {
-  color: inherit !important; 
-}
-
-.scroll-list::-webkit-scrollbar-track {
-    background: var(--primary-bg-color) !important; 
-}
-
-.top-gradient, .bottom-gradient {
-    background: linear-gradient(to bottom, var(--primary-bg-color), transparent) !important; 
-    background: linear-gradient(to top, var(--primary-bg-color), transparent) !important; 
-}
-
-/* ======================================= */
-/* --- MOBILE READABILITY/PERFORMANCE FIXES (max-width: 768px) --- */
-/* ======================================= */
-
-/* Find the MOBILE READABILITY/PERFORMANCE FIXES section (around line 235) */
-
+/* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
-    
-    /* 1. Disable Heavy GPU Effects (Terminal & Glitch) */
-    #terminal-wrapper {
-        display: none !important;
-    }
-    #full-screen-glitch {
-        display: none !important;
-    }
-    
-    /* --- FIX: MOBILE NAVIGATION HORIZONTAL SCROLL MENU --- */
-    nav {
-        /* Remove vertical stacking (flex-direction: column) */
-        flex-direction: row; 
-        /* Enable horizontal scrolling for the menu */
-        overflow-x: auto; 
-        /* Hide the vertical wrapping */
-        flex-wrap: nowrap; 
-        padding: 10px 0;
-        /* Ensure the background covers the whole scrollable area */
-        justify-content: flex-start;
-    }
-
-    nav a {
-        /* Set minimum padding to look clean */
-        padding: 10px 15px; 
-        margin: 0 0px; /* Remove horizontal margin */
-        /* Ensure the links stay in one line and don't take full width */
-        display: inline-block; 
-        white-space: nowrap;
-        /* Reduce font size slightly to fit more links on screen */
-        font-size: 1.4em; 
-    }
-    /* --- END MOBILE NAVIGATION FIX --- */
-
-    /* 3. Improve contrast when the glitch background is gone */
-    section {
-        background-color: rgba(0, 0, 0, 0.95) !important;
-    }
-
-    /* 4. Adjust sizes for mobile screen hierarchy */
-    header h1 {
-        font-size: 2.5em; 
-    }
-
-    header p {
-        font-size: 1.1em;
-    }
-
-    h2 {
-        font-size: 2.0em;
-    }
-    
-    /* Ensure all body text is slightly smaller on mobile */
-    p, ul, ol, li, .animated-list-container .item-text {
-        font-size: 1.1em; 
-    }
+  h1 { font-size: 2.5rem; }
+  header p { font-size: 1.2rem; }
+  nav { overflow-x: auto; justify-content: flex-start; padding: 1rem; }
+  nav a { margin: 0 1rem; white-space: nowrap; }
 }
